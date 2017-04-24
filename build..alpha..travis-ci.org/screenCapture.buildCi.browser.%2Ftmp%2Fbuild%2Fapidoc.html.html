@@ -1,0 +1,609 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="http://lab.hakim.se/ladda">ladda (v1.0.0)</a>
+</h1>
+<h4>Buttons with built-in loading indicators</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.ladda">module ladda</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ladda.bind">
+            function <span class="apidocSignatureSpan">ladda.</span>bind
+            <span class="apidocSignatureSpan">(a, e)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ladda.create">
+            function <span class="apidocSignatureSpan">ladda.</span>create
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ladda.stopAll">
+            function <span class="apidocSignatureSpan">ladda.</span>stopAll
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan"></span>ladda</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.ladda.ladda">module ladda.ladda</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ladda.ladda.bind">
+            function <span class="apidocSignatureSpan">ladda.ladda.</span>bind
+            <span class="apidocSignatureSpan">( target, options )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ladda.ladda.create">
+            function <span class="apidocSignatureSpan">ladda.ladda.</span>create
+            <span class="apidocSignatureSpan">( button )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ladda.ladda.stopAll">
+            function <span class="apidocSignatureSpan">ladda.ladda.</span>stopAll
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.ladda" id="apidoc.module.ladda">module ladda</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.ladda.bind" id="apidoc.element.ladda.bind">
+        function <span class="apidocSignatureSpan">ladda.</span>bind
+        <span class="apidocSignatureSpan">(a, e)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function e(a, e){e=e||{};var f=[];"string"==typeof a?f=h(document.querySelectorAll(a)):"object"==typeof a&amp;&amp;"string"==typeof a.nodeName
+&amp;&amp;(f=[a]);for(var g=0,i=f.length;i&gt;g;g++)!function(){var a=f[g];if("function"==typeof a.addEventListener){var h=b(a),i=-1;a.addEventListener
+("click",function(b){var f=!0,g=c(a,"FORM");if("undefined"!=typeof g)if("function"==typeof g.checkValidity)f=g.checkValidity();else
+ for(var j=d(g),k=0;k&lt;j.length;k++)""===j[k].value.replace(/^\s+|\s+$/g,"")&amp;&amp;(f=!1),"checkbox"!==j[k].type&amp;&amp;"radio"!==j[k].type||j[k].checked||(f=!1),"email"===j[k].type&amp;&amp;(f=/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(j[k].value));f&amp;&amp;(h.startAfter(1),"number"==typeof e.timeout&amp;&amp;(clearTimeout(i),i=setTimeout(h.stop,e.timeout)),"function"==typeof e.callback&amp;&amp;e.callback.apply(null,[h]))},!1)}}()}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+#### JavaScript
+
+If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can
+ use the ```bind()``` method:
+
+```javascript
+// Automatically trigger the loading animation on click
+Ladda.<span class="apidocCodeKeywordSpan">bind</span>( 'button[type=submit]' );
+
+// Same as the above but automatically stops after two seconds
+Ladda.bind( 'button[type=submit]', { timeout: 2000 } );
+```
+
+If you want JavaScript control over your buttons you can use the following approach:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ladda.create" id="apidoc.element.ladda.create">
+        function <span class="apidocSignatureSpan">ladda.</span>create
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function b(a){if("undefined"==typeof a)return void console.warn("Ladda button target must be defined.");if(/ladda-button/i.test(
+a.className)||(a.className+=" ladda-button"),a.hasAttribute("data-style")||a.setAttribute("data-style","expand-right"),!a.querySelector
+(".ladda-label")){var b=document.createElement("span");b.className="ladda-label",i(a,b)}var c,d=a.querySelector(".ladda-spinner");
+d||(d=document.createElement("span"),d.className="ladda-spinner"),a.appendChild(d);var e,f={start:function(){return c||(c=g(a)),
+a.setAttribute("disabled",""),a.setAttribute("data-loading",""),clearTimeout(e),c.spin(d),this.setProgress(0),this},startAfter:function
+(a){return clearTimeout(e),e=setTimeout(function(){f.start()},a),this},stop:function(){return a.removeAttribute("disabled"),a.removeAttribute
+("data-loading"),clearTimeout(e),c&amp;&amp;(e=setTimeout(function(){c.stop()},1e3)),this},toggle:function(){return this.isLoading()?this
+.stop():this.start(),this},setProgress:function(b){b=Math.max(Math.min(b,1),0);var c=a.querySelector(".ladda-progress");0===b&amp;&amp;c
+&amp;&amp;c.parentNode?c.parentNode.removeChild(c):(c||(c=document.createElement("div"),c.className="ladda-progress",a.appendChild(c)),c
+.style.width=(b||0)*a.offsetWidth+"px")},enable:function(){return this.stop(),this},disable:function(){return this.stop(),a.setAttribute
+("disabled",""),this},isLoading:function(){return a.hasAttribute("data-loading")},remove:function(){clearTimeout(e),a.removeAttribute
+("disabled",""),a.removeAttribute("data-loading",""),c&amp;&amp;(c.stop(),c=null);for(var b=0,d=j.length;d&gt;b;b++)if(f===j[b]){j.splice(b
+,1);break}}};return j.push(f),f}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Ladda.bind( 'button[type=submit]', { timeout: 2000 } );
+```
+
+If you want JavaScript control over your buttons you can use the following approach:
+
+```javascript
+// Create a new instance of ladda for the specified button
+var l = Ladda.<span class="apidocCodeKeywordSpan">create</span>( document.querySelector( '.my-button' ) );
+
+// Start loading
+l.start();
+
+// Will display a progress bar for 50% of the button width
+l.setProgress( 0.5 );
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ladda.stopAll" id="apidoc.element.ladda.stopAll">
+        function <span class="apidocSignatureSpan">ladda.</span>stopAll
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function f(){for(var a=0,b=j.length;b&gt;a;a++)j[a].stop()}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Delete the button's ladda instance
+l.remove();
+```
+
+All loading animations on the page can be stopped by using:
+
+```javascript
+Ladda.<span class="apidocCodeKeywordSpan">stopAll</span>();
+```
+
+#### With jQuery
+
+If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can
+ use the ```ladda('bind')``` method:
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.ladda.ladda" id="apidoc.module.ladda.ladda">module ladda.ladda</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.ladda.ladda.bind" id="apidoc.element.ladda.ladda.bind">
+        function <span class="apidocSignatureSpan">ladda.ladda.</span>bind
+        <span class="apidocSignatureSpan">( target, options )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function bind( target, options ) {
+
+		options = options || {};
+
+		var targets = [];
+
+		if( typeof target === 'string' ) {
+			targets = toArray( document.querySelectorAll( target ) );
+		}
+		else if( typeof target === 'object' &amp;&amp; typeof target.nodeName === 'string' ) {
+			targets = [ target ];
+		}
+
+		for( var i = 0, len = targets.length; i &lt; len; i++ ) {
+
+			(function() {
+				var element = targets[i];
+
+				// Make sure we're working with a DOM element
+				if( typeof element.addEventListener === 'function' ) {
+					var instance = create( element );
+					var timeout = -1;
+
+					element.addEventListener( 'click', function( event ) {
+
+						// If the button belongs to a form, make sure all the
+						// fields in that form are filled out
+						var valid = true;
+						var form = getAncestorOfTagType( element, 'FORM' );
+
+						if( typeof form !== 'undefined' ) {
+							// Modern form validation
+							if( typeof form.checkValidity === 'function' ) {
+								valid = form.checkValidity();
+							}
+							// Fallback to manual validation for old browsers
+							else {
+								var requireds = getRequiredFields( form );
+								for( var i = 0; i &lt; requireds.length; i++ ) {
+
+									if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
+										valid = false;
+									}
+
+									// Radiobuttons and Checkboxes need to be checked for the "checked" attribute
+									if( (requireds[i].type === 'checkbox' || requireds[i].type === 'radio' ) &amp;&amp; !requireds[i].checked ) {
+										valid = false;
+									}
+
+									// Email field validation
+									if( requireds[i].type === 'email' ) {
+										valid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test( requireds[i].value );
+									}
+
+								}
+							}
+						}
+
+						if( valid ) {
+							// This is asynchronous to avoid an issue where setting
+							// the disabled attribute on the button prevents forms
+							// from submitting
+							instance.startAfter( 1 );
+
+							// Set a loading timeout if one is specified
+							if( typeof options.timeout === 'number' ) {
+								clearTimeout( timeout );
+								timeout = setTimeout( instance.stop, options.timeout );
+							}
+
+							// Invoke callbacks
+							if( typeof options.callback === 'function' ) {
+								options.callback.apply( null, [ instance ] );
+							}
+						}
+
+					}, false );
+				}
+			})();
+
+		}
+
+	}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+#### JavaScript
+
+If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can
+ use the ```bind()``` method:
+
+```javascript
+// Automatically trigger the loading animation on click
+Ladda.<span class="apidocCodeKeywordSpan">bind</span>( 'button[type=submit]' );
+
+// Same as the above but automatically stops after two seconds
+Ladda.bind( 'button[type=submit]', { timeout: 2000 } );
+```
+
+If you want JavaScript control over your buttons you can use the following approach:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ladda.ladda.create" id="apidoc.element.ladda.ladda.create">
+        function <span class="apidocSignatureSpan">ladda.ladda.</span>create
+        <span class="apidocSignatureSpan">( button )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function create( button ) {
+
+		if( typeof button === 'undefined' ) {
+			console.warn( "Ladda button target must be defined." );
+			return;
+		}
+
+		// The button must have the class "ladda-button"
+		if( !/ladda-button/i.test( button.className ) ) {
+			button.className += ' ladda-button';
+		}
+
+		// Style is required, default to "expand-right"
+		if( !button.hasAttribute( 'data-style' ) ) {
+			button.setAttribute( 'data-style', 'expand-right' );
+		}
+
+		// The text contents must be wrapped in a ladda-label
+		// element, create one if it doesn't already exist
+		if( !button.querySelector( '.ladda-label' ) ) {
+			var laddaLabel = document.createElement( 'span' );
+			laddaLabel.className = 'ladda-label';
+			wrapContent( button, laddaLabel );
+		}
+
+		// The spinner component
+		var spinner,
+			spinnerWrapper = button.querySelector( '.ladda-spinner' );
+
+		// Wrapper element for the spinner
+		if( !spinnerWrapper ) {
+			spinnerWrapper = document.createElement( 'span' );
+			spinnerWrapper.className = 'ladda-spinner';
+		}
+
+		button.appendChild( spinnerWrapper );
+
+		// Timer used to delay starting/stopping
+		var timer;
+
+		var instance = {
+
+			<span class="apidocCodeCommentSpan">/**
+			 * Enter the loading state.
+			 */
+</span>			start: function() {
+
+				// Create the spinner if it doesn't already exist
+				if( !spinner ) spinner = createSpinner( button );
+
+				button.setAttribute( 'disabled', '' );
+				button.setAttribute( 'data-loading', '' );
+
+				clearTimeout( timer );
+				spinner.spin( spinnerWrapper );
+
+				this.setProgress( 0 );
+
+				return this; // chain
+
+			},
+
+			/**
+			 * Enter the loading state, after a delay.
+			 */
+			startAfter: function( delay ) {
+
+				clearTimeout( timer );
+				timer = setTimeout( function() { instance.start(); }, delay );
+
+				return this; // chain
+
+			},
+
+			/**
+			 * Exit the loading state.
+			 */
+			stop: function() {
+
+				button.removeAttribute( 'disabled' );
+				button.removeAttribute( 'data-loading' );
+
+				// Kill the animation after a delay to make sure it
+				// runs for the duration of the button transition
+				clearTimeout( timer );
+
+				if( spinner ) {
+					timer = setTimeout( function() { spinner.stop(); }, 1000 );
+				}
+
+				return this; // chain
+
+			},
+
+			/**
+			 * Toggle the loading state on/off.
+			 */
+			toggle: function() {
+
+				if( this.isLoading() ) {
+					this.stop();
+				}
+				else {
+					this.start();
+				}
+
+				return this; // chain
+
+			},
+
+			/**
+			 * Sets the width of the visual progress bar inside of
+			 * this Ladda button
+			 *
+			 * @param {Number} progress in the range of 0-1
+			 */
+			setProgress: function( progress ) {
+
+				// Cap it
+				progress = Math.max( Math.min( progress, 1 ), 0 );
+
+				var progressElement = button.querySelector( '.ladda-progress' );
+
+				// Remove the progress bar if we're at 0 progress
+				if( progress === 0 &amp;&amp; progressElement &amp;&amp; progressElement.parentNode ) {
+					progressElement.parentNode.removeChild( progressElement );
+				}
+				else {
+					if( !progressElement ) {
+						progressElement = document.createElement( 'div' );
+						progressElement.className = 'ladda-progress';
+						button.appendChild( progressElement );
+					}
+
+					progressElement.style.width = ( ( progress || 0 ) * button.offsetWidth ) + 'px';
+				}
+
+			},
+
+			enable: function() {
+
+				this.stop();
+
+				return this; // chain
+
+			},
+
+			disable: function () {
+
+				this.stop();
+				button.setAttribute( 'disabled', '' );
+
+				return this; // chain
+
+			},
+
+			isLoading: function() {
+
+				return button.hasAttribute( 'data-loading' );
+
+			},
+
+			remove: function() {
+
+				clearTimeout( timer );
+
+				button.removeAttribute( 'disabled', '' );
+				button.removeAttribute( 'data-loading', '' );
+
+				if( spinner ) {
+					spinner.stop();
+					spinner = null;
+				}
+
+				for( var i = 0, len = ALL_INSTANCES.length; i &lt; len; i++ ) {
+					if( instance === ALL_INSTANCES[i] ) {
+						ALL_INSTANCES.splice( i, 1 );
+						break;
+					}
+				}
+
+			}
+
+		};
+
+		ALL_INSTANCES.push( instance );
+
+		return instance;
+
+	}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Ladda.bind( 'button[type=submit]', { timeout: 2000 } );
+```
+
+If you want JavaScript control over your buttons you can use the following approach:
+
+```javascript
+// Create a new instance of ladda for the specified button
+var l = Ladda.<span class="apidocCodeKeywordSpan">create</span>( document.querySelector( '.my-button' ) );
+
+// Start loading
+l.start();
+
+// Will display a progress bar for 50% of the button width
+l.setProgress( 0.5 );
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ladda.ladda.stopAll" id="apidoc.element.ladda.ladda.stopAll">
+        function <span class="apidocSignatureSpan">ladda.ladda.</span>stopAll
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function stopAll() {
+
+		for( var i = 0, len = ALL_INSTANCES.length; i &lt; len; i++ ) {
+			ALL_INSTANCES[i].stop();
+		}
+
+	}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Delete the button's ladda instance
+l.remove();
+```
+
+All loading animations on the page can be stopped by using:
+
+```javascript
+Ladda.<span class="apidocCodeKeywordSpan">stopAll</span>();
+```
+
+#### With jQuery
+
+If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can
+ use the ```ladda('bind')``` method:
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
